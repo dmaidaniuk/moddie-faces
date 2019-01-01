@@ -1,0 +1,42 @@
+<!--
+  ~ The MIT License (MIT)
+  ~ 
+  ~ Copyright (c) 2015 ModdieFaces.
+  ~ 
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~ 
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~ 
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <div class="clear"></div>
+
+  <p:dialog closable="true" draggable="true" modal="true" dynamic="true" showEffect="blind"
+            header="Add Style" widgetVar="addStyle" hideEffect="blind" id="addStyleDialog">
+    <h:outputLabel for="newStyle" value="Style name: " style="font-weight: bold;"/>
+    <p:spacer width="10"/>
+    <p:inputText id="newStyle" value="#{adminController.newStyleName}"/><br/>
+    <p:spacer height="20"/>
+    <ui:include src="styleDialogGroups.xhtml"/>
+    <p:commandButton value="Save" onclick="PF('addStyle').hide()" actionListener="#{adminController.addStyle}"
+                     update="@form"/>
+  </p:dialog>
+
+</ui:composition>

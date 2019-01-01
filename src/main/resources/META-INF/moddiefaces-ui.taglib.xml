@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ The MIT License (MIT)
+  ~ 
+  ~ Copyright (c) 2015 ModdieFaces.
+  ~ 
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~ 
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~ 
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+                version="2.0">
+    <namespace>http://moddiefaces.org/ui</namespace>
+    <tag>
+        <tag-name>content</tag-name>
+        <component>
+            <component-type>org.moddiefaces.component.Content</component-type>
+            <renderer-type>org.moddiefaces.renderkit.ContentRenderer</renderer-type>
+        </component>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>namespace</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>id</name>
+        </attribute>
+        <attribute>
+            <name>escape</name>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>binding</name>
+            <type>javax.faces.component.UIComponent</type>
+        </attribute>
+        <attribute>
+            <name>rendered</name>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <name>style</name>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+        </attribute>
+        <attribute>
+            <name>dir</name>
+        </attribute>
+        <attribute>
+            <name>lang</name>
+        </attribute>
+        <attribute>
+            <name>title</name>
+        </attribute>
+    </tag>
+    
+    <tag>
+      <tag-name>markdown</tag-name>
+      <description>
+        The markdown tag renders an HTML "textarea" element using markItUp! as markdown plugin.
+      </description>
+      <component>
+         <component-type>org.moddiefaces.component.Markdown</component-type>
+      </component>
+      <attribute>
+         <name>label</name>
+         <type>java.lang.String</type>
+         <description>A localized user presentable name for this component.
+         </description>
+      </attribute>
+      <attribute>
+         <name>value</name>
+         <required>true</required>
+      </attribute>
+      <attribute>
+         <name>readonly</name>
+         <type>java.lang.Boolean</type>
+      </attribute>
+      <attribute>
+         <name>rendered</name>
+         <type>java.lang.Boolean</type>
+      </attribute>
+      <attribute>
+         <name>required</name>
+         <type>java.lang.Boolean</type>
+      </attribute>
+      <attribute>
+         <name>disabled</name>
+         <type>java.lang.Boolean</type>
+      </attribute>
+      <attribute>
+         <name>style</name>
+         <type>java.lang.String</type>
+      </attribute>
+      <attribute>
+         <name>styleClass</name>
+         <type>java.lang.String</type>
+      </attribute>
+      <attribute>
+         <name>language</name>
+         <type>java.lang.String</type>
+      </attribute>
+   </tag>
+</facelet-taglib>

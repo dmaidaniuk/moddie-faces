@@ -1,0 +1,80 @@
+<!--
+  ~ The MIT License (MIT)
+  ~ 
+  ~ Copyright (c) 2015 ModdieFaces.
+  ~ 
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~ 
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~ 
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<ui:composition template="_template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xml:lang="en">
+
+  <ui:define name="body">
+    <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+      <p:panel style="height: 427px; text-align: left;">
+        <f:facet name="header">
+          <div style="display: inline-block; width: 100%; text-align: center;">
+            #{pageContent.style.name}
+          </div>
+        </f:facet>
+        <h:inputTextarea id="theEditor" value="#{pageContent.style.style}" styleClass="codeEd"/>
+        <script type="text/javascript">
+          function updateCodeTextArea(editor) {
+            editor.save();
+          }
+
+          var jqElement = $('.codeEd');
+          var element = jqElement.get()[0];
+          var cmEditor = CodeMirror.fromTextArea(element, {
+            lineNumbers: true,
+            onChange: updateCodeTextArea
+          });
+        </script>
+      </p:panel>
+    </div>
+
+    <p:spacer height="10"/>
+
+    <p:spacer width="10%"/>
+    <p:button value="Cancel" outcome="style.xhtml">
+      <f:param name="namespace" value="#{adminController.incomingNamespace}"/>
+      <f:param name="contentName" value="#{adminController.incomingContentName}"/>
+    </p:button>
+    <p:spacer height="10px" width="50%"/>
+    <p:commandButton value="Save" action="#{adminController.saveStyle}" update="messages"/>
+
+    <p:spacer height="10"/>
+
+    <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+      <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px;">
+        <p:tab title="Permissions">
+          <ui:include src="inc/embeddedGroups.xhtml"/>
+        </p:tab>
+      </p:accordionPanel>
+      <script type="text/javascript">
+        PF('accord').unselect(0);
+      </script>
+    </div>
+  </ui:define>
+</ui:composition>

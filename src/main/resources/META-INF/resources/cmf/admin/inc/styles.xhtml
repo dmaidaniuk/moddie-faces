@@ -1,0 +1,53 @@
+<!--
+  ~ The MIT License (MIT)
+  ~ 
+  ~ Copyright (c) 2015 ModdieFaces.
+  ~ 
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~ 
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~ 
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <p:panel id="slot" style="height: 50px;" binding="#{adminController.stylePanel}">
+    <h:outputText value="Drag styles here from the tree to apply them to the content"
+                  rendered="#{!(pageContent.hasContent and pageContent.contentHasStyles)}"/>
+    <ui:repeat value="#{pageContent.content.styles}" var="node">
+      <p:tooltip for="styleButton" value="#{node.namespace.fullName}.#{node.name}"/>
+      <p:button id="styleButton" value="#{node.name}" outcome="pretty:style">
+        <f:param name="namespace" value="#{node.namespace.fullName}"/>
+        <f:param name="styleName" value="#{node.name}"/>
+      </p:button>
+      <p:commandButton image="ui-icon-circle-close" actionListener="#{adminController.removeStyle}"
+                       update="theTree actionArea">
+        <f:attribute name="namespace" value="#{node.namespace.fullName}"/>
+        <f:attribute name="styleName" value="#{node.name}"/>
+      </p:commandButton>
+    </ui:repeat>
+  </p:panel>
+  <p:outputPanel binding="#{adminController.dropper}">
+    <p:droppable id="dropper" for="slot" onDrop="handleDrop" widgetVar="dropper">
+
+      <p:ajax event="drop" listener="#{adminController.styleDrop}"/>
+    </p:droppable>
+  </p:outputPanel>
+</ui:composition>
