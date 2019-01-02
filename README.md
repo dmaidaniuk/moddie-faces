@@ -20,7 +20,7 @@ The following steps should get you up and running. Once you're logged into the a
 
 * You should use servlet 3.0 container and `web.xml` version 3.0.
 * Copy `cmf.jar` to your project's `WEB-INF/lib` directory.
-* If you're running `Tomcat 7`, copy `derby-10.5.3.0_1.jar`, `eclipselink.jar`, and `javax.persistence.jar` to your `WEB-INF/lib` directory as well. You'll also need to deploy the JSF implementation libraries (available here: http://javaserverfaces.java.net/download.html).
+* If you're running `Tomcat 7`, copy `derby-10.5.3.0_1.jar`, `eclipselink.jar`, and `javax.persistence.jar` to your `WEB-INF/lib` directory as well. You'll also need to deploy the JSF implementation libraries (available here: https://javaee.github.io/javaserverfaces-spec/).
 * Copy `cmf-config.xml` to your project's WEB-INF directory.
 * Examples of using PostgreSQL and MySQL datasources are included in the `cmf-config.xml` file. If you wish to use one of these databases, database generation scripts are located in the scripts directory. (You'll need to supply your own jdbc jar files, i.e. `mysql-connector.jar`, in the `WEB-INF/lib` directory).
 * If you're using an IDE, make sure it includes `cmf.jar` in its classpath so that it sees the tag library.
