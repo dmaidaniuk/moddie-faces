@@ -1,8 +1,8 @@
-#Introduction
+# Introduction
 
 **Moddie Faces** is an open-source tag library and administration interface for content management with Java Server Faces applications. 
 
-#Features
+# Features
 
 * a single JAR and configuration file to deploy;
 * tag library to put content into your jsf pages;
@@ -10,11 +10,11 @@
 * embedded Derby database for quick startup;
 * connect to JDBC data source of your choice by specifying JPA style configuration options.
 
-#Status
+# Status
 
 The project is currently in alpha stage. The software is fairly stable, but untested on various application servers. Currently it is working with Glassfish 3.0.1 and Tomcat 7. 
 
-#Details
+# Details
 
 The following steps should get you up and running. Once you're logged into the admin panel you can continue to use the in memory derby database or specify a place on the file system to persist the data.
 
